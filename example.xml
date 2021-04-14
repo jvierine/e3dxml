@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tdm xmlns:e3d="urn:ccsds:recommendation:navigation:schema:e3dxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CCSDS_TDM_VERS" version="2.0" xsi:noNamespaceSchemaLocation="./e3dxml-2.0.xsd">
+   <header>
+      <CREATION_DATE>2017-271T06:20:16.994</CREATION_DATE>
+      <ORIGINATOR>EISCAT</ORIGINATOR>
+   </header>
+   <body>
+    <segment>
+     <metadata xsi:type="e3d:e3dMetadata">
+      <!-- Date prefix - ETID -->
+      <TIME_SYSTEM>UTC</TIME_SYSTEM>
+      <START_TIME>2019-08-01T14:39:02.0</START_TIME>
+      <STOP_TIME>2019-08-01T14:39:07.0</STOP_TIME>
+      <PARTICIPANT_1>Skibotn</PARTICIPANT_1>
+      <PARTICIPANT_2>ECID:C0000001</PARTICIPANT_2>
+      <PARTICIPANT_3>Karesuvanto</PARTICIPANT_3>
+      <MODE>SEQUENTIAL</MODE>                 
+      <PATH>1,2,3</PATH>                 
+      <TRANSMIT_BAND>VHF</TRANSMIT_BAND>
+      <RECEIVE_BAND>VHF</RECEIVE_BAND>
+      <TIMETAG_REF>RECEIVE</TIMETAG_REF>
+      <INTEGRATION_INTERVAL>0.2</INTEGRATION_INTERVAL>
+      <INTEGRATION_REF>END</INTEGRATION_REF>
+      <RANGE_UNITS>km</RANGE_UNITS>
+      <ANGLE_TYPE>AZEL</ANGLE_TYPE>
+
+      <DATA_QUALITY>VALIDATED</DATA_QUALITY>
+      <CORRECTIONS_APPLIED>YES</CORRECTIONS_APPLIED>
+      
+      <e3d:TRACK_INDEX>ETID:20190801-T000000001</e3d:TRACK_INDEX>
+      <e3d:RADAR_OP_MODE>NORMAL_SURVEILLANCE</e3d:RADAR_OP_MODE>      
+      <!--<TRANSMIT_FREQUENCY_1>233.3e6</TRANSMIT_FREQUENCY_1> -->
+
+      <e3d:MEANRCS_M2>41.5341</e3d:MEANRCS_M2>
+      <e3d:NPLOTS>193</e3d:NPLOTS>      
+
+      <!-- phase center of transmit antenna, ITRF2000 -->
+      <e3d:PARTICIPANT_1_LOCATION>2116270.527,783506.979,5945578.766</e3d:PARTICIPANT_1_LOCATION>
+      <!-- phase center of the receiver antenna, ITRF2000 -->
+      <e3d:PARTICIPANT_3_LOCATION>2169917.373,900254.195,5909843.249</e3d:PARTICIPANT_3_LOCATION>       
+
+
+
+      </metadata>
+      <data xsi:type="e3d:e3dData">
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <!--This observation corresponds to the Azimuth angle of the i-th plot-->
+         <ANGLE_1>24.7587</ANGLE_1>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <!--This observation corresponds to the Elevation angle of the i-th plot-->
+         <ANGLE_2>68.2279</ANGLE_2>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <RANGE>638.7774</RANGE>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <DOPPLER_INSTANTANEOUS>-2.2699</DOPPLER_INSTANTANEOUS>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:SIGMA_ANGLE_1>0.040587</e3d:SIGMA_ANGLE_1>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:SIGMA_ANGLE_2>0.016103</e3d:SIGMA_ANGLE_2>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:CORRCOEFFAZELERR>-0.030915</e3d:CORRCOEFFAZELERR>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:SIGMA_RANGE>0.018597</e3d:SIGMA_RANGE>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:SIGMA_DOPPLER>0.02844</e3d:SIGMA_DOPPLER>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:CORR_RANGE_DOPPLER>0.01</e3d:CORR_RANGE_DOPPLER>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:SNR>10.0705</e3d:SNR>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:20:16.994</EPOCH>
+         <e3d:RCS_M2>29.3109</e3d:RCS_M2>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <!--This observation corresponds to the Azimuth angle of the i-th plot-->
+         <ANGLE_1>179.8374</ANGLE_1>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <ANGLE_2>71.1542</ANGLE_2>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <RANGE>640.248</RANGE>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <DOPPLER_INSTANTANEOUS>2.3019</DOPPLER_INSTANTANEOUS>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:SIGMA_ANGLE_1>0.046581</e3d:SIGMA_ANGLE_1>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:SIGMA_ANGLE_2>0.015713</e3d:SIGMA_ANGLE_2>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:CORRCOEFFAZELERR>0.023424</e3d:CORRCOEFFAZELERR>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:SIGMA_RANGE>0.022128</e3d:SIGMA_RANGE>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:SIGMA_DOPPLER>0.02844</e3d:SIGMA_DOPPLER>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:CORR_RANGE_DOPPLER>0.01</e3d:CORR_RANGE_DOPPLER>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:SNR>9.9197</e3d:SNR>
+        </observation>
+        <observation>
+         <EPOCH>2017-271T06:21:12.356</EPOCH>
+         <e3d:RCS_M2>22.7317</e3d:RCS_M2>
+        </observation>
+      </data>
+     </segment>
+   </body>
+</tdm>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+   xmlns:ndm="urn:ccsds:schema:ndmxml"
+   xmlns="urn:ccsds:recommendation:navigation:schema:e3dxml"
+   targetNamespace="urn:ccsds:recommendation:navigation:schema:e3dxml">
+ 
+   <!--********************************************************************-->
+   <!-- NOTE: This is version 2.0 of the E3D/XML Schema (12/04/2021). -->
+   <!--********************************************************************-->
+ 
+   <!--********************************************************************-->
+   <!-- Import the applicable namespaces -->
+   <!--********************************************************************-->
+   <xsd:import namespace="urn:ccsds:schema:ndmxml" schemaLocation="./ndmxml-2.0.0-tdm-2.0.xsd"/>
+ 
+   <!--********************************************************************-->
+   <!-- Type declarations for all element types contained in the E3D/XML-->
+   <!--********************************************************************-->
+   <!--********************************************************************-->
+   <!-- A TDM consists of a "header" and a "body".  The header is a        -->
+   <!-- construct that is shared by all NDM's, found in the "common" schema-->
+   <!--********************************************************************-->
+   
+   <xsd:complexType name="e3dTdmType">
+      <xsd:sequence>
+         <xsd:element name="header" type="ndm:ndmHeader"/>
+         <xsd:element name="body"   type="e3dBody"/>       
+      </xsd:sequence>
+      <xsd:attribute name="id"      use="required"  fixed="CCSDS_TDM_VERS"/>
+      <xsd:attribute name="version" use="required"  fixed="2.0"/>
+   </xsd:complexType>
+   
+   
+   <!--********************************************************************-->
+   <!-- The TDM "body" consists of 1 or more "segments", described below.  -->
+   <!--********************************************************************-->
+   
+   <xsd:complexType name="e3dBody">
+      <xsd:sequence>
+         <xsd:element name="segment" type="e3dSegment" 
+            minOccurs="1" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   
+   <!--********************************************************************-->
+   <!-- The TDM "segment" consists of a "metadata" section and a "data"    -->
+   <!-- section.  The segment construct is specifically stated in the      -->
+   <!-- structure of each TDM as described in the TDM specification.       -->
+   <!--********************************************************************-->  
+   
+   <xsd:complexType name="e3dSegment">
+      <xsd:sequence>
+         <xsd:element name="metadata" type="e3dMetadata"/>
+         <xsd:element name="data" type="e3dData"/>
+      </xsd:sequence>
+   </xsd:complexType>
+ 
+   <!--********************************************************************-->
+   <!-- E3D Metadata Section                                               -->
+   <!--********************************************************************-->
+   <!-- datatype for itrf coordinates, need three cartesian coordinates -->
+   <xsd:simpleType name="itrf_coord">
+     <xsd:restriction base="xsd:string">
+        <xsd:pattern value="[0-9]+.[0-9]+,[0-9]+.[0-9]+,[0-9]+.[0-9]+"/>
+     </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="e3dMetadata">
+      <xsd:complexContent>
+         <xsd:extension base="ndm:tdmMetadata">
+            <xsd:sequence>
+               <xsd:element name="TRACK_INDEX" type="xsd:string" form="qualified"/>
+               <xsd:element name="RADAR_OP_MODE" type="e3dRadarOpMode" form="qualified"/>
+               <xsd:element name="MEANRCS_M2" type="xsd:double" form="qualified"/>
+               <xsd:element name="NPLOTS" type="xsd:unsignedInt" form="qualified"/>
+               <xsd:element name="PARTICIPANT_1_LOCATION" type="itrf_coord" form="qualified"/>
+               <xsd:element name="PARTICIPANT_3_LOCATION" type="itrf_coord" form="qualified"/>	       	       	       
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <!--********************************************************************-->
+   <!-- Simple Types and Complex Types unique to the E3D                   -->
+   <!--********************************************************************-->
+   <!--********************************************************************-->
+   <!-- NOTE:  The following structure of the E3D Data Section is based on -->
+   <!-- an "observation".  Each observation contains a given epoch time,   -->
+   <!-- and the observable as of the epoch time. This structure reduces the-->
+   <!-- pre-processing required to build a E3D from disparate input        -->
+   <!-- sources.                                                           -->
+   <!--********************************************************************-->
+   <xsd:complexType name="e3dData">
+      <xsd:sequence>
+         <xsd:element name="COMMENT" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="observation" type="e3dTrackingDataObservationType" minOccurs="1" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+ 
+   <xsd:complexType name="e3dTrackingDataObservationType">
+      <xsd:sequence>
+         <xsd:element name="EPOCH" type="ndm:epochType"/>
+         <xsd:choice>
+            <xsd:element name="ANGLE_1"               type="ndm:angleType"/>
+            <xsd:element name="ANGLE_2"               type="ndm:angleType"/>
+            <xsd:element name="CARRIER_POWER"         type="xsd:double"/>
+            <xsd:element name="CLOCK_BIAS"            type="xsd:double" default="0.0"/>
+            <xsd:element name="CLOCK_DRIFT"           type="xsd:double" default="0.0"/> 
+            <xsd:element name="DOPPLER_INSTANTANEOUS" type="xsd:double"/>
+            <xsd:element name="DOPPLER_INTEGRATED"    type="xsd:double"/>
+            <xsd:element name="DOR"                   type="xsd:double"/>
+            <xsd:element name="PC_N0"                 type="xsd:double"/>
+            <xsd:element name="PR_N0"                 type="xsd:double"/>
+            <xsd:element name="PRESSURE"              type="xsd:double"/>
+            <xsd:element name="RANGE"                 type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ"          type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ_1"        type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ_2"        type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ_3"        type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ_4"        type="xsd:double"/>
+            <xsd:element name="RECEIVE_FREQ_5"        type="xsd:double"/>
+            <xsd:element name="RHUMIDITY"             type="ndm:percentType"/>
+            <xsd:element name="STEC"                  type="xsd:double" />
+            <xsd:element name="TEMPERATURE"           type="ndm:nonNegativeDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_1"       type="ndm:positiveDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_2"       type="ndm:positiveDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_3"       type="ndm:positiveDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_4"       type="ndm:positiveDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_5"       type="ndm:positiveDouble"/>
+            <xsd:element name="TRANSMIT_FREQ_RATE_1"  type="xsd:double"/>
+            <xsd:element name="TRANSMIT_FREQ_RATE_2"  type="xsd:double"/>
+            <xsd:element name="TRANSMIT_FREQ_RATE_3"  type="xsd:double"/>
+            <xsd:element name="TRANSMIT_FREQ_RATE_4"  type="xsd:double"/>
+            <xsd:element name="TRANSMIT_FREQ_RATE_5"  type="xsd:double"/>
+            <xsd:element name="TROPO_DRY"             type="ndm:nonNegativeDouble"/>
+            <xsd:element name="TROPO_WET"             type="ndm:nonNegativeDouble"/>
+            <xsd:element name="VLBI_DELAY"            type="xsd:double"/>
+            <xsd:element name="SIGMA_ANGLE_1"         type="xsd:double" form="qualified"/>
+            <xsd:element name="SIGMA_ANGLE_2"         type="xsd:double" form="qualified"/>
+            <xsd:element name="CORRCOEFFAZELERR"      type="xsd:double" form="qualified"/>
+            <xsd:element name="CORR_RANGE_DOPPLER"      type="xsd:double" form="qualified"/>	    
+            <xsd:element name="SIGMA_RANGE"           type="xsd:double" form="qualified"/>
+            <xsd:element name="SIGMA_DOPPLER"         type="xsd:double" form="qualified"/>
+            <xsd:element name="SNR"                   type="xsd:double" form="qualified"/>
+            <xsd:element name="RCS_M2"                type="xsd:double" form="qualified"/>
+         </xsd:choice>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:simpleType name="e3dRadarOpMode">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="NORMAL_SURVEILLANCE"/>
+         <xsd:enumeration value="INTENSIVE_SURVEILLANCE"/>
+         <xsd:enumeration value="DEDICATED_TRACKING"/>
+         <xsd:enumeration value="IONOSPHERIC"/>	 
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

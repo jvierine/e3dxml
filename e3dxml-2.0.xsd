@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+   xmlns:e3d="urn:ccsds:recommendation:navigation:schema:e3dxml">
+ 
+   <xsd:import namespace="urn:ccsds:recommendation:navigation:schema:e3dxml" schemaLocation="./e3dxml-2.0-namespace-2.0.xsd"/>
+ 
+   <!--********************************************************************-->
+   <!-- Element declarations for all element types contained in the E3D/XML-->
+   <!--********************************************************************-->
+   <xsd:element name="tdm" type="e3d:e3dTdmType"/>
+</xsd:schema>
